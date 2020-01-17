@@ -6,63 +6,47 @@
   "license": "MIT",
   "repository": "tannerlinsley/react-query",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest .",
-    "build": "NODE_ENV=production rollup -c",
-    "now-build": "yarn && cd www && yarn && yarn build",
-    "start": "rollup -c -w",
-    "prepare": "yarn build",
-    "release": "yarn publish",
-    "releaseNext": "yarn publish --tag next",
-    "format": "prettier {src,src/**,example/src,example/src/**}/*.{md,js,jsx,tsx} --write"
-  },
-  "peerDependencies": {
-    "react": "^16.6.3"
-  },
-  "dependencies": {
-    "@types/react-query": "^0.3.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@svgr/rollup": "^4.3.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "9.x",
-    "babel-jest": "^24.9.0",
-    "cross-env": "^5.1.4",
-    "eslint": "5.x",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-config-react-app": "^4.0.1",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-flowtype": "2.x",
-    "eslint-plugin-import": "2.x",
-    "eslint-plugin-jsx-a11y": "6.x",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-react": "7.x",
-    "eslint-plugin-react-hooks": "1.5.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "fast-async": "^6.3.8",
-    "jest": "^24.9.0",
-    "prettier": "^1.18.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "rollup": "^1.12.4",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-size": "^0.2.1",
-    "rollup-plugin-size-snapshot": "^0.10.0",
-    "rollup-plugin-terser": "^5.1.2"
-  },
+  "module": "dist/new.esm.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist"
-  ]
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "exit; tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.9.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
+    "eslint": "^6.8.0",
+    "husky": "^4.0.10",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "tsdx": "^0.12.3",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "tiny-invariant": "^1.0.6"
+  }
 }
